@@ -15,18 +15,18 @@ include 'includes/navbar.php';
 
 <main class="donation-container">
     <h2>Make a Donation</h2>
-    <p class="form-intro">Your support helps us provide second chances for every tail.</p>
+    <p class="form-intro">Your support helps us provide second chances for every animal in need.</p>
     
     <form action="donate.php" method="POST" class="donation-form">
         
         <div class="form-group">
             <label for="donor_name">Your Name:</label>
-            <input type="text" id="donor_name" name="donor_name" required placeholder="Enter your full name">
+            <input type="text" id="donor_name" name="donor_name" required placeholder="Enter your full name"><br>
         </div>
 
         <div class="form-group">
             <label for="donation_amount">Donation Amount (R):</label>
-            <input type="number" id="donation_amount" name="donation_amount" min="1" step="0.01" required placeholder="Enter amount">
+            <input type="number" id="donation_amount" name="donation_amount" min="1" step="0.01" required placeholder="Enter amount"><br></br>
         </div>
 
         <div class="form-group">
@@ -42,10 +42,10 @@ include 'includes/navbar.php';
 
         
 
-        <button type="submit" class="submit-btn" onclick="alert('Thank you so much got your donation! Please click OK to be redirected to the Homepage...'); window.location.href='index.php'; return false;">Submit Donation</button>
+        <button type="submit" class="submit-btn" onclick="alert('Thank you for your donation! Please click OK to be redirected to the Homepage...'); window.location.href='index.php'; return false;">Submit Donation</button>
         
     </form>
+    <a href="index.php" class="add-item-btn">Back To Home</a>
 </main>
-
 </body>
 </html>

@@ -109,12 +109,13 @@ $conn->close();
                         <input type="email" id="user_email" name="user_email" required placeholder="john@example.com">
                     </div>
                     <div class="input-group">
-                        <label for="user_phone">Phone Number</label>
-                        <input type="tel" id="user_phone" name="user_phone" required placeholder="012 345 6789">
+                        <label for="phone">Phone Number</label><br>
+                        <input type="tel" id="user_phone" name="phone" required placeholder="012 345 6789"><br></br>
                     </div>
                 </div>
             </div>
 
+            
             <div class="form-section">
                 <h3>2. Eligibility & Living Environment</h3>
                 
@@ -129,21 +130,22 @@ $conn->close();
                 </div>
 
                 <div class="input-group">
-                    <label>Is your yard fully fenced/secured?</label>
+                    <label>Is your yard fully fenced/secured?</label><br></br>
                     <div class="radio-group">
-                        <label><input type="radio" name="yard_fenced" value="Yes" required> Yes</label>
-                        <label><input type="radio" name="yard_fenced" value="No"> No</label>
-                        <label><input type="radio" name="yard_fenced" value="N/A"> No Yard / Apartment</label>
+                        <label><input type="radio" name="yard_fenced" value="Yes" required> Yes</label><br>
+                        <label><input type="radio" name="yard_fenced" value="No"> No</label><br>
+                        <label><input type="radio" name="yard_fenced" value="Partial"> Partially Fenced</label><br>
+                        <label><input type="radio" name="yard_fenced" value="N/A"> No Yard / Apartment</label><br></br>
                     </div>
                 </div>
 
                 <div class="input-row">
                     <div class="input-group">
-                        <label for="hours_alone">Average hours pet will be left alone daily?</label>
-                        <input type="number" id="hours_alone" name="hours_alone" min="0" max="24" required placeholder="e.g. 4">
+                        <label for="hours_alone">Average hours pet will be left alone daily?</label><br></br>
+                        <input type="number" id="hours_alone" name="hours_alone" min="0" max="24" required placeholder="e.g. 4"><br></br>
                     </div>
                     <div class="input-group">
-                        <label for="has_experience">Do you have previous pet experience?</label>
+                        <label for="has_experience">Do you have previous pet experience?</label><br></br>
                         <select id="has_experience" name="has_experience" required>
                             <option value="" disabled selected>Select an option</option>
                             <option value="First-time owner">First-time owner</option>

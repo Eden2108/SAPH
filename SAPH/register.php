@@ -29,7 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Register - Pastimes</title>
+    <title>Register - Save-A-Pet HUB</title>
     <!-- Link to site-wide CSS -->
     <link rel="stylesheet" type="text/css" href="includes/assets/css/style.css">
 </head>

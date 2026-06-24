@@ -22,14 +22,14 @@ if(isset($_SESSION['cart'])){
 
         <!-- Navigation -->
         <nav class="nav-links">
-            <a href="index.php">Home</a>
-            <a href="adopt.php">Adopt</a>
-            <a href="shop.php">Pets</a>
-           <a href="cart.php">Donate</a>
-            <a href="contact.php">Volunteer</a>
+           <a href="index.php">Home</a>
+            <a href="adoption_application.php">Adopt</a>
+            <a href="pet_listings.php">Pets</a>
+            <a href="donation.php">Donate</a>
+            <a href="volunteer.php">Volunteer</a>
             <a href="login.php">Login</a>
             <a href="register.php">Register</a>
-             <a href="admin.php">Admin</a>
+            <a href="admin_dashboard.php">Admin</a>
         </nav>
     </div>
 </header>

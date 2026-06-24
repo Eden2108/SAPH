@@ -27,7 +27,7 @@ if ($email) {
 <!DOCTYPE html>
 <html>
 <head>
-    <title>My Profile - Pastimes</title>
+    <title>My Profile - Save-A-Pet HUB</title>
     <link rel="stylesheet" href="includes/assets/css/style.css">
 </head>
 <body>

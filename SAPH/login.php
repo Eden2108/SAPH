@@ -7,7 +7,7 @@ $error = "";
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Login - Pastimes</title>
+    <title>Login - Save-A-Pet HUB</title>
     <link rel="stylesheet" type="text/css" href="includes/assets/css/style.css">
 </head>
 <body>

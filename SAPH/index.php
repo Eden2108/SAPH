@@ -19,7 +19,7 @@
 </section>
 
 
-<!-- Featured items -->
+<!-- Featured pets -->
 <h2>Available Pets</h2>
 <div class="product-grid">
     <?php
@@ -36,7 +36,7 @@
             <img src='{$item['image']}' alt='{$item['name']}'>
             <h4>{$item['name']}</h4>
             
-            <a href='shop.php'><input type='submit' value='View Available Pets'></a>
+            <a href='pet_listings.php'><input type='submit' value='View Available Pets'></a>
           </div>";
 }
     ?>
@@ -90,8 +90,8 @@
     </div>
 </section>
 
-<!-- Floating Add Item button -->
-<a href="shop.php" class="add-item-btn">Browse Available Pets</a>
+<!-- Floating browse available pets button -->
+<a href="pet_listings.php" class="add-item-btn">Browse Available Pets</a>
 </main>
 
 <?php include 'includes/footer.php'; ?> <!-- Include footer -->
