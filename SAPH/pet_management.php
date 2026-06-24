@@ -17,7 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['update_all'])) {
     }
 
     // Refresh page after update
-    header("Location: pet_management.php");
+   header("Location: pet_management.php?updated=true");
     exit();
 }
 
@@ -85,20 +85,40 @@ $result = $conn->query("SELECT PetID, Name, Age, Colour, AdoptionStatus FROM Pet
             border-radius: 4px;
             border: 1px solid #ccc;
         }
-    </style>
+        .success-banner {
+            background-color: whitesmoke;
+            color: black;
+            padding: 12px;
+            text-align: center;
+            font-weight: bold;
+            border-radius: 4px;
+            margin: 15px auto;
+            width: 80%;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+            animation: fadeIn 0.8s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from {opacity: 0;}
+            to {opacity: 1;}
+        }
+</style>
 </head>
 <body>
 <main>
     <h2>Manage Pets</h2><br>
 
+    <?php if (isset($_GET['updated']) && $_GET['updated'] == 'true'): ?>
+    <div class="success-banner">Successfully Updated Pet Statuses 🎉</div>
+    <?php endif; ?>
+
+
     <!-- Top bar -->
     <div class="top-bar">
     <a href="add_pet.php" class="btn btn-add"> Add New Pet</a>
-    <a href="pet_listings.php?updated=true" class="btn btn-update">Update Status</a>
+    <a href="pet_management.php?updated=true" class="btn btn-update">Update Status</a>
 </div>
 
     
-        
     <form method="POST" action="">
         <table>
             <tr>
@@ -130,3 +150,15 @@ $result = $conn->query("SELECT PetID, Name, Age, Colour, AdoptionStatus FROM Pet
 <?php include 'includes/footer.php'; ?>
 </body>
 </html>
+
+ // Banner fade out script 
+<script>
+    setTimeout(function() {
+        const banner = document.querySelector('.success-banner');
+        if (banner) {
+            banner.style.transition = "opacity 1s ease";
+            banner.style.opacity = "0";
+            setTimeout(() => banner.remove(), 1000);
+        }
+    }, 3000); // disappears after 3 seconds
+</script>

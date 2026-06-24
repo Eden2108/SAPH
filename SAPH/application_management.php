@@ -27,7 +27,8 @@ th, td {
 }
 
 th {
-  background-color: #f2f2f2;
+  background-color: lightseagreen;
+  color: white;
   font-weight: bold;
 }
 

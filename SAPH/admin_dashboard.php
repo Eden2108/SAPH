@@ -59,9 +59,8 @@ include 'DBConn.php';
         </div>
 
     </div>
-
+<a href="index.php" class="add-item-btn">Back To Home</a>
 </main>
-
 <?php include 'includes/footer.php'; ?>
 </body>
 </html>

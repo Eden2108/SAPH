@@ -11,6 +11,34 @@ $result = $conn->query("SELECT DonationID, DonorName, Amount, PaymentMethod, Don
 <head>
     <title>Donation Management - Save-A-Pet Hub</title>
     <link rel="stylesheet" href="includes/assets/css/style.css">
+    <style>
+        table {
+        width: 90%;
+        margin: 0 auto; /* center the table */
+        border-collapse: collapse;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    th, td {
+        border: 1px solid #ddd;
+        padding: 12px;
+        text-align: center;
+    }
+
+    th {
+        background-color: lightseagreen;
+        color: white;
+        font-weight: bold;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+
+    tr:hover {
+        background-color: #ffe5b4; /* light orange hover */
+    }
+    </style>
 </head>
 <body>
 <main>
@@ -39,6 +67,7 @@ $result = $conn->query("SELECT DonationID, DonorName, Amount, PaymentMethod, Don
             <tr><td colspan="6">No donations found.</td></tr>
         <?php endif; ?>
     </table>
+    <a href="admin_dashboard.php" class="add-item-btn">Back to Admin Dashboard</a>
 </main>
 <?php include 'includes/footer.php'; ?>
 </body>

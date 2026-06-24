@@ -39,6 +39,5 @@ $result = $conn->query("SELECT * FROM products");
 <a href="admin_dashboard.php" class="add-item-btn">Back to Admin Dashboard</a>
 </main>
 <?php include 'includes/footer.php'; ?>
-
 </body>
 </html>

@@ -15,7 +15,7 @@ $email = $_SESSION['email'] ?? null; // store email in session during login
 $userData = null;
 
 if ($email) {
-    $stmt = $conn->prepare("SELECT name, email FROM tblUser WHERE email=?");
+    $stmt = $conn->prepare("SELECT name, email FROM Users WHERE email=?");
     $stmt->bind_param("s", $email);
     $stmt->execute();
     $result = $stmt->get_result();
@@ -43,7 +43,7 @@ if ($email) {
             <p>Welcome, <?php echo htmlspecialchars($_SESSION['user']); ?>!</p>
         <?php endif; ?>
 
-        <a href="logout.php" class="btn logout">Back to Home</a>
+        <a href="logout.php" class="btn logout">Logout</a>
     </div>
 </main>
 

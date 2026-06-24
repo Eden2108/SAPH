@@ -56,24 +56,44 @@ elseif (isset($_GET['petName'])) {
 <head>
     <title>Pet Details</title>
     <link rel="stylesheet" href="includes/assets/css/style.css">
+    <style>
+.pet-details {
+    width: 100%;
+    margin: 20px 0;
+}
+
+.pet-details dt {
+    display: inline-block;   /* keep label inline */
+    font-weight: bold;
+    color: black;
+    margin-right: 6px;       /* small gap between label and value */
+}
+
+.pet-details dd {
+    display: inline-block;   /* keep value inline */
+    margin: 0;               /* remove big default margin */
+}
+</style>
+
 </head>
 <body>
 <div class="container">
 <?php if($pet): ?>
     <h2><?php echo $pet['Name'] ?? $pet['name']; ?></h2>
     <img src="<?php echo $pet['image'] ?? "includes/assets/images/".strtolower(str_replace(' ', '-', $pet['Name'])).".jpg"; ?>" width="300">
-    <table>
-        <?php if(isset($pet['Species'])): ?>
-            <tr><th>Species</th><td><?php echo $pet['Species']; ?></td></tr>
-            <tr><th>Breed</th><td><?php echo $pet['Breed']; ?></td></tr>
-            <tr><th>Age</th><td><?php echo $pet['Age']; ?></td></tr>
-            <tr><th>Colour</th><td><?php echo $pet['Colour']; ?></td></tr>
-            <tr><th>Health Status</th><td><?php echo $pet['HealthStatus']; ?></td></tr>
-            <tr><th>Adoption Status</th><td><?php echo $pet['AdoptionStatus']; ?></td></tr>
-        <?php else: ?>
-            <tr><td colspan="2"><?php echo $pet['description']; ?></td></tr>
-        <?php endif; ?>
-    </table>
+   <dl class="pet-details">
+    <?php if(isset($pet['Species'])): ?>
+        <dt>Species:</dt><dd><?php echo $pet['Species']; ?></dd><br>
+        <dt>Breed:</dt><dd><?php echo $pet['Breed']; ?></dd><br>
+        <dt>Age:</dt><dd><?php echo $pet['Age'] . ' ' . strtolower($pet['AgeUnit']); ?> old</dd><br>
+        <dt>Colour:</dt><dd><?php echo $pet['Colour']; ?></dd><br>
+        <dt>Health Status:</dt><dd><?php echo $pet['HealthStatus']; ?></dd><br>
+        <dt>Adoption Status:</dt><dd><?php echo $pet['AdoptionStatus']; ?></dd><br>
+    <?php else: ?>
+        <dt>Description:</dt><dd><?php echo $pet['description']; ?></dd>
+    <?php endif; ?>
+</dl>
+
     <br>
     <a href="adoption_application.php">
         <button>Apply for Adoption</button>
