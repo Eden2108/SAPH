@@ -26,9 +26,9 @@
     // Array of featured products
     $featured = [
         ["name" => "Orange Corn Snake (8 months old) ",  "image" => "includes/assets/images/snake_pet.jpg"],
-        ["name" => "Golden retriever dog (6 years old) ", "price" => 549.99, "image" => "includes/assets/images/dog_pet.jpg"],
-        ["name" => "Hamster (2 years old) ", "price" => 399.99, "image" => "includes/assets/images/hamster_pet.jpg"],
-        ["name" => "Kitten (7 months old) ", "price" => 289.99, "image" => "includes/assets/images/cat_pet.jpg"]
+        ["name" => "Golden retriever dog (6 years old) ",  "image" => "includes/assets/images/dog_pet.jpg"],
+        ["name" => "Hamster (2 years old) ",  "image" => "includes/assets/images/hamster_pet.jpg"],
+        ["name" => "Kitten (7 months old) ",  "image" => "includes/assets/images/cat_pet.jpg"]
     ];
     // Loop through and display each product
     foreach ($featured as $item) {

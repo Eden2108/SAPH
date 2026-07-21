@@ -1,15 +1,11 @@
 <?php
-if(session_status() === PHP_SESSION_NONE){
+if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-$cartCount = 0;
-
-if(isset($_SESSION['cart'])){
-    foreach($_SESSION['cart'] as $item){
-        $cartCount += $item['quantity'];
-    }
-}
+$isLoggedIn = isset($_SESSION['UserID']);
+$isVolunteerLoggedIn = isset($_SESSION['VolunteerID']);
+$userRole = $_SESSION['Role'] ?? '';
 ?>
 
 <!-- Header file for navigation -->
@@ -23,13 +19,120 @@ if(isset($_SESSION['cart'])){
         <!-- Navigation -->
         <nav class="nav-links">
            <a href="index.php">Home</a>
-            <a href="adoption_application.php">Adopt</a>
-            <a href="pet_listings.php">Pets</a>
-            <a href="donation.php">Donate</a>
-            <a href="volunteer.php">Volunteer</a>
-            <a href="login.php">Login</a>
-            <a href="register.php">Register</a>
-            <a href="admin_dashboard.php">Admin</a>
+    <a href="pet_listings.php">Adopt</a>
+    <!-- GET INVOLVED -->
+            <div class="nav-dropdown">
+
+                <button class="dropdown-button">
+                    Get Involved
+                    <span class="dropdown-arrow">▾</span>
+                </button>
+
+                <div class="dropdown-menu">
+
+                    <a href="donation.php">
+                        Donate
+                    </a>
+
+                    <a href="volunteer.php">
+                        Volunteer
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- ANIMAL SERVICES -->
+            <div class="nav-dropdown">
+
+                <button class="dropdown-button">
+                    Animal Services
+                    <span class="dropdown-arrow">▾</span>
+                </button>
+
+                <div class="dropdown-menu">
+
+                    <a href="report_abuse.php">
+                        Report Animal Abuse
+                    </a>
+
+                    <a href="pet_surrender.php">
+                        Pet Surrender
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- NOT LOGGED IN -->
+            <?php if (!$isLoggedIn && !$isVolunteerLoggedIn): ?>
+
+                <a href="login.php">
+                    Login
+                </a>
+
+                <a href="register.php">
+                    Register
+                </a>
+
+
+            <!-- LOGGED IN -->
+            <?php else: ?>
+
+
+                <!-- NORMAL USER -->
+                <?php if ($isLoggedIn && $userRole === 'User'): ?>
+
+                    <a
+                        href="profile.php"
+                        class="profile-nav"
+                        title="My Profile">
+
+                        <span class="profile-avatar">
+                            👤
+                        </span>
+
+                    </a>
+
+
+                <!-- ADMIN -->
+                <?php elseif ($isLoggedIn && $userRole === 'Admin'): ?>
+
+                    <a
+                        href="admin_dashboard.php"
+                        class="profile-nav"
+                        title="Admin Profile">
+
+                        <span class="profile-avatar">
+                            👤
+                        </span>
+
+                    </a>
+
+
+                <!-- VOLUNTEER -->
+                <?php elseif ($isVolunteerLoggedIn): ?>
+
+                    <a
+                        href="volunteer_profile.php"
+                        class="profile-nav"
+                        title="Volunteer Profile">
+
+                        <span class="profile-avatar">
+                            👤
+                        </span>
+
+                    </a>
+
+                <?php endif; ?>
+
+
+            <?php endif; ?>
+
         </nav>
+
     </div>
+
 </header>

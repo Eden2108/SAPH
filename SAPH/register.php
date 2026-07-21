@@ -1,89 +1,152 @@
 <?php
-include 'DBConn.php'; // Include database connection file
-session_start();      // Start session to store user data
+session_start();
+include 'DBConn.php';
 
-$error = ""; // Variable to hold error messages
+$error = "";
 
-/* --- CHECK IF FORM IS SUBMITTED --- */
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $name     = $_POST["name"];
-    $email    = $_POST["email"];
-    $password = $_POST["password"];
 
-    $stmt = $conn->prepare("INSERT INTO users (name, email, password) VALUES (?, ?, ?)");
-    $stmt->bind_param("sss", $name, $email, $password);
+    $name = trim($_POST["name"]);
+    $email = trim($_POST["email"]);
+    $plainPassword = $_POST["password"];
 
-    if ($stmt->execute()) {
-        $_SESSION['user']  = $name;
-        $_SESSION['email'] = $email;
-        header("Location: profile.php");
-        exit();
+    // Check if email already exists
+    $checkStmt = $conn->prepare(
+        "SELECT UserID FROM users WHERE email = ?"
+    );
+
+    $checkStmt->bind_param("s", $email);
+    $checkStmt->execute();
+
+    $result = $checkStmt->get_result();
+
+    if ($result->num_rows > 0) {
+
+        $error = "An account with this email address already exists.";
+
     } else {
-        $error = "Error: " . $stmt->error;
+
+        // Securely hash password
+        $hashedPassword = password_hash(
+            $plainPassword,
+            PASSWORD_DEFAULT
+        );
+
+        $stmt = $conn->prepare(
+            "INSERT INTO users (name, email, password)
+             VALUES (?, ?, ?)"
+        );
+
+        $stmt->bind_param(
+            "sss",
+            $name,
+            $email,
+            $hashedPassword
+        );
+
+        if ($stmt->execute()) {
+
+            // Store user session
+            $_SESSION['UserID'] = $stmt->insert_id;
+            $_SESSION['FullName'] = $name;
+            $_SESSION['Role'] = "User";
+
+            // Redirect directly to Home Page
+            header("Location: index.php");
+            exit();
+
+        } else {
+
+            $error = "Registration failed. Please try again.";
+
+        }
+
+        $stmt->close();
     }
 
-    $stmt->close();
-    $conn->close();
+    $checkStmt->close();
 }
 ?>
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
     <title>Register - Save-A-Pet HUB</title>
-    <!-- Link to site-wide CSS -->
-    <link rel="stylesheet" type="text/css" href="includes/assets/css/style.css">
+
+    <link
+        rel="stylesheet"
+        type="text/css"
+        href="includes/assets/css/style.css"
+    >
 </head>
+
 <body>
 
-<?php include 'includes/navbar.php'; ?> <!-- Consistent header -->
+<?php include 'includes/navbar.php'; ?>
 
 <main>
+
     <div class="form-box">
+
         <h2>Create Account</h2>
-        <?php if ($error) echo "<p class='error'>$error</p>"; ?>
+
+        <?php if (!empty($error)): ?>
+
+            <p class="error">
+                <?php echo htmlspecialchars($error); ?>
+            </p>
+
+        <?php endif; ?>
+
         <form method="POST">
+
             <label>Name:</label>
-            <input type="text" name="name" required>
+
+            <input
+                type="text"
+                name="name"
+                required
+            >
 
             <label>Email:</label>
-            <input type="email" name="email" required>
+
+            <input
+                type="email"
+                name="email"
+                required
+            >
 
             <label>Password:</label>
-            <input type="password" name="password" required>
 
-            <button type="submit" class="btn">Register</button>
+            <input
+                type="password"
+                name="password"
+                required
+            >
+
+            <button
+                type="submit"
+                class="submit-btn"
+            >
+                Register
+            </button>
+
         </form>
+
     </div>
+
 </main>
 
-<?php include 'includes/footer.php'; ?> <!-- Consistent footer -->
+<?php include 'includes/footer.php'; ?>
 
 </body>
+
 </html>
-
-<?php
-include 'DBConn.php';// Include database connection file
-
-/* --- DROP TABLE IF EXISTS --- */
-$drop = "DROP TABLE IF EXISTS tblUser";
-$conn->query($drop);
-
-/* --- CREATE TABLE --- */
-$create = "CREATE TABLE tblUser (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(100) NOT NULL,
-    email VARCHAR(150) NOT NULL UNIQUE,
-    password VARCHAR(255) NOT NULL
-)";
-$conn->query($create);
-
-/* --- LOAD DATA FROM TEXT FILE --- */
-/* The file userData.txt should be in the same folder as this script.
-   Example contents:
-   John Doe,jdoe@abc.co.za,29ef52e7563626a96cea74b4085c124c
-   Jane Smith,jsmith@abc.co.za,29ef52e7563626a96cea74b4085c124c
-*/
-
-
-$conn->close();
-?>
