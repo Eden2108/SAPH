@@ -87,10 +87,10 @@ $userRole = $_SESSION['Role'] ?? '';
 
                     <a
                         href="profile.php"
-                        class="profile-nav"
+                        class="navbar-avatar"
                         title="My Profile">
 
-                        <span class="profile-avatar">
+                        <span class="navbar-avatar">
                             👤
                         </span>
 
@@ -102,10 +102,10 @@ $userRole = $_SESSION['Role'] ?? '';
 
                     <a
                         href="admin_dashboard.php"
-                        class="profile-nav"
+                        class="navbar-avatar"
                         title="Admin Profile">
 
-                        <span class="profile-avatar">
+                        <span class="navbar-avatar">
                             👤
                         </span>
 
@@ -117,10 +117,10 @@ $userRole = $_SESSION['Role'] ?? '';
 
                     <a
                         href="volunteer_profile.php"
-                        class="profile-nav"
+                        class="navbar-avatar"
                         title="Volunteer Profile">
 
-                        <span class="profile-avatar">
+                        <span class="navbar-avatar">
                             👤
                         </span>
 

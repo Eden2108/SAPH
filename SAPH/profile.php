@@ -12,22 +12,22 @@ if (!isset($_SESSION['UserID']) || ($_SESSION['Role'] ?? '') !== 'User') {
 
 $userID = intval($_SESSION['UserID']);
 
-$sql = "SELECT UserID, name, email, Role
+$sql = "SELECT UserID,
+               name,
+               LastName,
+               email,
+                Role
         FROM users
         WHERE UserID = ?";
 
 $stmt = $conn->prepare($sql);
-
-if (!$stmt) {
-    die("SQL Prepare Error: " . $conn->error);
-}
 
 $stmt->bind_param("i", $userID);
 $stmt->execute();
 
 $result = $stmt->get_result();
 
-if ($result->num_rows !== 1) {
+if($result->num_rows != 1){
     header("Location: logout.php");
     exit();
 }
@@ -36,27 +36,36 @@ $user = $result->fetch_assoc();
 
 $stmt->close();
 
-$initial = strtoupper(substr($user['name'], 0, 1));
+// Get first letter of first name
+$firstInitial = strtoupper(substr($user['name'], 0, 1));
+
+// Get first letter of last name (if it exists)
+$lastInitial = "";
+
+if (!empty($user['LastName'])) {
+    $lastInitial = strtoupper(substr($user['LastName'], 0, 1));
+}
+
+// Combine them (e.g. RB)
+$initial = $firstInitial . $lastInitial;
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+
+<html>
 
 <head>
 
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>My Profile | Save-A-Pet HUB</title>
+<title>My Profile | Save-A-Pet HUB</title>
 
-    <link
-        rel="stylesheet"
-        href="includes/assets/css/style.css"
-    >
+<link rel="stylesheet" href="includes/assets/css/style.css">
+
+<link rel="stylesheet"
+href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
 
 </head>
 
@@ -64,182 +73,152 @@ $initial = strtoupper(substr($user['name'], 0, 1));
 
 <?php include 'includes/navbar.php'; ?>
 
-
-<main class="profile-page">
-
-    <div class="profile-container">
-
-
-        <!-- PROFILE HEADER -->
-
-        <div class="profile-header">
-
-            <div class="profile-avatar-large">
-                <?php echo htmlspecialchars($initial); ?>
-            </div>
-
-
-            <div class="profile-heading">
-
-                <h2>
-                    <?php echo htmlspecialchars($user['name']); ?>
-                </h2>
-
-                <p>
-                    <?php echo htmlspecialchars($user['email']); ?>
-                </p>
-
-                <span class="profile-role">
-                    Save-A-Pet HUB Member
-                </span>
-
-            </div>
-
-        </div>
-
-
-
-        <!-- ACCOUNT INFORMATION -->
-
-        <div class="profile-section">
-
-            <h3>Account Information</h3>
-
-            <div class="profile-information-grid">
-
-
-                <div class="profile-information-item">
-
-                    <span>Full Name</span>
-
-                    <strong>
-                        <?php echo htmlspecialchars($user['name']); ?>
-                    </strong>
-
-                </div>
-
-
-                <div class="profile-information-item">
-
-                    <span>Email Address</span>
-
-                    <strong>
-                        <?php echo htmlspecialchars($user['email']); ?>
-                    </strong>
-
-                </div>
-
-
-                <div class="profile-information-item">
-
-                    <span>Account Role</span>
-
-                    <strong>
-                        <?php echo htmlspecialchars($user['Role']); ?>
-                    </strong>
-
-                </div>
-
-
-            </div>
-
-        </div>
-
-
-
-        <!-- ACCOUNT ACTIONS -->
-
-        <div class="profile-section">
-
-            <h3>Manage Account</h3>
-
-            <div class="profile-action-grid">
-
-
-                <a
-                    href="update_profile.php"
-                    class="profile-action-card"
-                >
-
-                    <span class="profile-action-icon">
-                        👤
-                    </span>
-
-                    <div>
-
-                        <strong>
-                            Update Profile
-                        </strong>
-
-                        <p>
-                            Change your personal account information.
-                        </p>
-
-                    </div>
-
-                </a>
-
-
-
-                <a
-                    href="change_password.php"
-                    class="profile-action-card"
-                >
-
-                    <span class="profile-action-icon">
-                        🔒
-                    </span>
-
-                    <div>
-
-                        <strong>
-                            Change Password
-                        </strong>
-
-                        <p>
-                            Update your account password securely.
-                        </p>
-
-                    </div>
-
-                </a>
-
-
-            </div>
-
-        </div>
-
-
-
-        <!-- PROFILE FOOTER ACTIONS -->
-
-        <div class="profile-footer-actions">
-
-            <a
-                href="index.php"
-                class="add-item-btn"
-            >
-                Back to Home
-            </a>
-
-
-            <a
-                href="logout.php"
-                class="logout-btn"
-            >
-                Logout
-            </a>
-
-        </div>
-
+<div class="page-wrapper">
+    <main class="profile-page">
+
+        <div class="profile-card">
+
+<!-- PROFILE HEADER -->
+        <div class="profile-top">
+
+    <div class="profile-avatar">
+        <?php echo $initial; ?>
+    </div>
+
+    <div class="profile-user-info">
+
+        <h2>
+            <?php
+            echo htmlspecialchars($user['name']) .
+            " " .
+            htmlspecialchars($user['LastName']);
+            ?>
+        </h2>
+
+        <p>
+            <?php echo htmlspecialchars($user['email']); ?>
+        </p>
 
     </div>
 
+</div>
+
+        <hr>
+
+        <!-- MANAGE ACCOUNT -->
+    <div class="profile-links">
+
+        <a href="update_profile.php" class="profile-link">
+
+        <span class="icon">👤</span>
+
+        <div>
+
+        <strong>Profile Details</strong>
+
+        <p>Manage your profile and address</p>
+
+        </div>
+
+        </a>
+
+
+        <a href="change_password.php" class="profile-link">
+
+        <span class="icon">🔒</span>
+
+        <div>
+
+        <strong>Change Password</strong>
+
+        <p>Keep your account secure.</p>
+
+        </div>
+
+        </a>
+
+
+        <a href="my_applications.php" class="profile-link">
+
+        <span class="icon">🐾</span>
+
+        <div>
+
+        <strong>Adoption History</strong>
+
+        <p>Track your adoption applications.</p>
+
+        </div>
+
+        </a>
+
+
+        <a href="home_inspections.php" class="profile-link">
+
+        <span class="icon">🏡</span>
+
+        <div>
+
+        <strong>Home Inspections</strong>
+
+        <p>View upcoming inspections.</p>
+
+        </div>
+
+        </a>
+
+
+        <a href="donation_history.php" class="profile-link">
+
+        <span class="icon">💖</span>
+
+        <div>
+
+        <strong>Donation History</strong>
+
+        <p>View your previous donations.</p>
+
+        </div>
+
+        </a>
+
+
+        <a href="#" class="profile-link">
+
+        <span class="icon">📄</span>
+
+        <div>
+
+        <strong>Adoption Certificate</strong>
+
+        <p>Available after a successful adoption.</p>
+
+        </div>
+
+        </a>
+
+        </div>
+
+        <hr>
+
+        <div class="profile-footer">
+
+        <a href="logout.php" class="logout-btn">
+
+        <span class="material-symbols-outlined">
+
+        logout
+
+        </span>Logout</a>
+
+        </div>
+
+    </div>
+</div>
 </main>
 
+    <?php include 'includes/footer.php'; ?>
 
-<?php include 'includes/footer.php'; ?>
-
-</body>
+    </body>
 
 </html>

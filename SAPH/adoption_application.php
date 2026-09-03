@@ -682,7 +682,7 @@ $conn->close();
 >
 
 <option value="" disabled selected>
-    Select an option
+    --Select an option--
 </option>
 
 <option value="House">
@@ -791,7 +791,7 @@ No Yard / Apartment
 >
 
 <option value="" disabled selected>
-    Select an option
+    --Select an option--
 </option>
 
 <option value="First-time owner">
@@ -854,7 +854,7 @@ No Yard / Apartment
 <h3>4. Home Inspection Appointment</h3>
 
 <p class="form-description">
-    Please select your preferred date and time for an SPCA
+    Please select your preferred date and time for an SAPH inspector to conduct a
     home inspection at the address provided above.
 </p>
 
