@@ -800,6 +800,42 @@ footer {
     cursor: pointer;
 }
 
+
+/* ==========================================
+   PET SURRENDER
+========================================== */
+
+.surrender-fee {
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:16px;
+
+    margin:20px 0;
+
+    background:#f6f1e7;
+
+    border-radius:10px;
+
+    font-size:16px;
+
+}
+
+.surrender-fee span {
+
+    font-size:20px;
+
+    font-weight:bold;
+
+    color:#008080;
+
+}
+
+
 /* ===================================
    USER PROFILE
 =================================== */

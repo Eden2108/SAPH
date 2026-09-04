@@ -96,7 +96,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             mistreated, or placed in danger, please provide as
             much information as possible. 
         </p>
-
+<br>
         <?php if (!empty($message)): ?>
 
             <div class="alert <?php echo $message_class; ?>">
@@ -113,7 +113,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <!-- REPORTER INFORMATION -->
 <div class="information-box">
 
-                <h3>Important Information</h3>
+                <h3>Important Information:</h3>
 
                 <p>
                     Please contact us if you know of any animal that is being neglected or treated badly. By reporting cruelty, you help to free them from suffering.
@@ -136,7 +136,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <br><br>
             <div class="form-section">
 
-                <h3>1. Your Information</h3>
+                <h3>1. Your Information:</h3>
 
                 <p class="section-description">
                     Your contact information may be used if
@@ -202,7 +202,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             <div class="form-section">
 
-                <h3>2. Incident Information</h3>
+                <h3>2. Incident Information:</h3>
 
 
                 <div class="input-group">
@@ -347,7 +347,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <div class="form-section">
 
-    <h3>3. Urgency Assessment</h3>
+    <h3>3. Urgency Assessment:</h3>
 
     <p class="section-description">
         Please select the option that best describes the current situation of the animal.
@@ -404,6 +404,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 </main>
 
+ <a href="index.php" class="add-item-btn">Back To Home</a>
 
 <?php include 'includes/footer.php'; ?>
 

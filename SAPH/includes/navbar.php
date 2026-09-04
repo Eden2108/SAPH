@@ -61,6 +61,10 @@ $userRole = $_SESSION['Role'] ?? '';
                         Pet Surrender
                     </a>
 
+                    <a href="contact.php">
+                        Contact Us
+                    </a>
+
                 </div>
 
             </div>

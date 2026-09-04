@@ -9,8 +9,8 @@
 <?php include 'includes/navbar.php'; ?>
 
 <main>
-<h2>Volunteer to help</h2>
-<p style= "text-align: center;">If you have any questions or would like to volunteer, please reach out to us below:</p>
+<h2>Contact Us</h2>
+<p style= "text-align: center;">If you have any questions or would like to get in touch, please reach out to us below:</p>
 
 <form method="POST" action="index.php">
     <label for="name">Your Name:</label><br>
