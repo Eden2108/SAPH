@@ -47,7 +47,7 @@ $sql = "SELECT
             p.Breed,
             p.Image
 
-        FROM adoption_applications a
+        FROM adoptionapplication a
 
         INNER JOIN pet p
             ON a.PetID = p.PetID
@@ -128,6 +128,7 @@ $result = $stmt->get_result();
 
         </p>
 
+        <br>
 
         <?php
 
@@ -349,14 +350,6 @@ $result = $stmt->get_result();
                 </p>
 
 
-                <a
-                    href="profile.php"
-                    class="action-btn"
-                >
-
-                    Back to Profile
-
-                </a>
 
             </div>
 
@@ -370,17 +363,10 @@ $result = $stmt->get_result();
 
         <!-- Back to profile button -->
 
-        <div class="history-back">
+    
+            <a href="profile.php" class="add-item-btn"> Back to Profile</a>
 
-            <a
-                href="profile.php"
-                class="cancel-btn history-back-btn"
-            >
-
-                Back to Profile
-
-            </a>
-
+               
         </div>
 
 

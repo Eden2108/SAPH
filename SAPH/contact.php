@@ -9,24 +9,48 @@
 <?php include 'includes/navbar.php'; ?>
 
 <main>
-<h2>Contact Us</h2>
-<p style= "text-align: center;">If you have any questions or would like to get in touch, please reach out to us below:</p>
 
-<form method="POST" action="index.php">
-    <label for="name">Your Name:</label><br>
-    <input type="text" id="name" name="name" required><br><br>
+    <div class="form-box">
 
-    <label for="email">Your Email:</label><br>
-    <input type="email" id="email" name="email" required><br><br>
+        <h2>Contact Us</h2>
 
-    <label for="message">Message:</label><br>
-    <textarea id="message" name="message" rows="5" required></textarea><br><br>
+        <p class="form-intro">
+            If you have any questions or would like to get in touch,
+            please reach out to us below.
+        </p>
 
-    <input type="submit" value="Send Details">
-</form>
-</main>
+        <form>
 
+            <label>Your Name:</label>
+
+            <input
+                type="text"
+                name="name"
+                required>
+
+
+            <label>Your Email:</label>
+
+            <input
+                type="email"
+                name="email"
+                required>
+
+
+            <label>Message:</label>
+
+            <textarea
+                name="message"
+                rows="6"
+                required></textarea>
+
+
+            <button type="submit">
+                Send Details
+            </button>
+
+        </form>
+
+    </div>
 <?php include 'includes/footer.php'; ?>
-
-</body>
-</html>
+</main>

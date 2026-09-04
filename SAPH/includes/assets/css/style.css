@@ -54,7 +54,7 @@ vertical-align: middle;
 }
 
 .nav-links a,
-.dropdown-btn {
+.dropdown-button {
     position: relative;
     display: inline-block;
     color: #006d6f;
@@ -65,7 +65,7 @@ vertical-align: middle;
 }
 
 .nav-links a::after,
-.dropdown-btn::after {
+.dropdown-button::after {
     content: "";
     position: absolute;
     left: 0;
@@ -81,17 +81,17 @@ vertical-align: middle;
 }
 
 .nav-links a:hover::after,
-.dropdown-btn:hover::after {
+.dropdown-button:hover::after {
     width: 100%;
 }
 
 .nav-links a:hover,
-.dropdown-btn:hover {
+.dropdown-button:hover {
     color: #D88A2D;
 }
 
 
-.dropdown-btn {
+.dropdown-button {
     background: none;
     border: none;
     cursor: pointer;
@@ -141,17 +141,20 @@ vertical-align: middle;
     display: block;
 }
 
-.navbar-avatar{
+.navbar-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #72427D;
 
-    width:50px;
-    height:50px;
-    border-radius:50%;
-    background:#72427D;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-    display:flex;
-    align-items:center;
-    justify-content:center;
+    text-decoration: none;
+    font-size: 20px;
 
+    transition: 0.3s;
 }
 
 .navbar-avatar:hover {
@@ -345,47 +348,41 @@ button:hover{
    FORM CONTAINER
 ========================== */
 
-.form-box{
+/* ==========================================
+   GENERAL FORM LAYOUT
+   ========================================== */
 
-    max-width:700px;
+.form-box {
+    max-width: 700px;
+    margin: 40px auto;
+    padding: 35px;
 
-    width:90%;
+    background: #fffdf9;
 
-    margin:50px auto;
+    border-radius: 15px;
 
-    padding:35px;
+    box-shadow:
+        0 5px 20px rgba(0, 0, 0, 0.08);
 
-    background:#ffffff;
-
-    border-radius:18px;
-
-    box-shadow:0 4px 14px rgba(0,0,0,.07);
-
-    border:1px solid #eee3d9;
-
+    border: 1px solid #e4ddd3;
 }
 
-.form-box h2{
+.form-box label {
+    display: block;
 
-    text-align:center;
+    margin-bottom: 8px;
+    margin-top: 15px;
 
-    margin-bottom:30px;
+    font-weight: 600;
 
-    color:#D88A2D;
-
+    color: #2f2f2f;
 }
 
-.form-box label{
-
-    display:block;
-
-    margin-bottom:8px;
-
-    font-weight:bold;
-
-    color:#4d4d4d;
-
+.form-box h2 {
+    text-align: center;
+    margin-bottom: 15px;
 }
+
 
 .form-box .error{
 
@@ -403,41 +400,29 @@ button:hover{
 
 }
 
+.form-intro {
+    text-align: center;
+
+    margin-bottom: 25px;
+
+    color: #666;
+
+    line-height: 1.6;
+}
+
 /* ==========================
    FORM INPUTS
 ========================== */
 
-.form-box input[type="text"],
-.form-box input[type="email"],
-.form-box input[type="password"],
-.form-box input[type="file"],
+.form-box input,
 .form-box textarea,
-.form-box select{
-
-    width:100%;
-
-    padding:12px;
-
-    margin-top:8px;
-
-    margin-bottom:20px;
-
-    border:1px solid #d9cec3;
-
-    border-radius:10px;
-
-    background:#fffdfb;
-
-    font-size:15px;
-
-    transition:.25s;
-
+.form-box select {
+    width: 100%;
 }
 
-.form-box textarea{
 
-    resize:none;
-
+.form-box button {
+    margin-top: 10px;
 }
 
 /* ===LAYOUT FIX FOR FOOTER=== */
@@ -757,7 +742,7 @@ footer {
 /* Card Descriptions */
 .dashboard-card p {
     font-size: 15px;
-    color: #b0bec5; /* Matching your --text-muted */
+    color: #b0bec5; 
     margin: 0;
     line-height: 1.5;
 }

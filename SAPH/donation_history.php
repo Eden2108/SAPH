@@ -39,7 +39,7 @@ $sql = "SELECT
             DonationDate,
             PaymentMethod
 
-        FROM donations
+        FROM donation
 
         WHERE UserID = ?
 
@@ -245,7 +245,7 @@ $result = $stmt->get_result();
 
 
                 <a
-                    href="donate.php"
+                    href="donation.php"
                     class="action-btn"
                 >
 
@@ -268,10 +268,7 @@ $result = $stmt->get_result();
 
         <div class="history-back">
 
-            <a
-                href="profile.php"
-                class="cancel-btn history-back-btn"
-            >
+            <a href="profile.php" class="add-item-btn">
 
                 Back to Profile
 

@@ -50,7 +50,7 @@ $sql = "SELECT
             p.Colour,
             p.Image
 
-        FROM adoption_applications a
+        FROM adoptionapplication a
 
         INNER JOIN pet p
             ON a.PetID = p.PetID

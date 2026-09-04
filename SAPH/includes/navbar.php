@@ -90,13 +90,11 @@ $userRole = $_SESSION['Role'] ?? '';
                 <?php if ($isLoggedIn && $userRole === 'User'): ?>
 
                     <a
-                        href="profile.php"
-                        class="navbar-avatar"
-                        title="My Profile">
+                         href="profile.php"
+                         class="navbar-avatar"
+                     title="My Profile">
 
-                        <span class="navbar-avatar">
-                            👤
-                        </span>
+                        👤
 
                     </a>
 
@@ -104,31 +102,20 @@ $userRole = $_SESSION['Role'] ?? '';
                 <!-- ADMIN -->
                 <?php elseif ($isLoggedIn && $userRole === 'Admin'): ?>
 
-                    <a
-                        href="admin_dashboard.php"
-                        class="navbar-avatar"
-                        title="My Profile">
-
-                        <span class="navbar-avatar">
-                            👤
-                        </span>
-
-                    </a>
+                 <a href="admin_dashboard.php" class="navbar-avatar" title="Administrator Dashboard">👤</a>
 
 
                 <!-- VOLUNTEER -->
                 <?php elseif ($isVolunteerLoggedIn): ?>
 
-                    <a
-                        href="volunteer_profile.php"
-                        class="navbar-avatar"
-                        title="Volunteer Profile">
+                                <a
+                    href="volunteer_profile.php"
+                    class="navbar-avatar"
+                    title="Volunteer Profile">
 
-                        <span class="navbar-avatar">
-                            👤
-                        </span>
+                    👤
 
-                    </a>
+                </a>
 
                 <?php endif; ?>
 
