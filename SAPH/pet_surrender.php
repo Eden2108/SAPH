@@ -159,245 +159,71 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 <?php include 'includes/navbar.php'; ?>
 
 
-<main class="profile-page">
-
-    <div class="profile-card">
-
-        <h2>Pet Surrender Request</h2>
+<main>
+    <div class="form-box">
+        <h2>Pet Surrender Request 🐾</h2>
 
         <p class="form-intro">
-
             Please provide information about the pet you wish to surrender.
             This information will help us review your request.
-
         </p>
-
 
         <!-- Success message -->
         <?php if (!empty($success)) { ?>
-
-            <div class="success-message">
-
-                <?php echo htmlspecialchars($success); ?>
-
-            </div>
-
+            <p class="success"><?php echo htmlspecialchars($success); ?></p>
         <?php } ?>
-
 
         <!-- Error message -->
         <?php if (!empty($error)) { ?>
-
-            <div class="error">
-
-                <?php echo htmlspecialchars($error); ?>
-
-            </div>
-
+            <p class="error"><?php echo htmlspecialchars($error); ?></p>
         <?php } ?>
-
-
+<br>
         <form method="POST">
+            <label for="PetName">Pet Name: *</label>
+            <input type="text" id="PetName" name="PetName" required>
 
-
-            <!-- Pet name -->
-            <label>Pet Name *</label>
-
-            <input
-                type="text"
-                name="PetName"
-                required
-            >
-
-
-            <!-- Animal type -->
-            <label>Animal Type *</label>
-
-            <select
-                name="AnimalType"
-                id="animalType"
-                required
-            >
-
-                <option value="">
-                    Select animal type
-                </option>
-
-                <option value="Dog">
-                    Dog
-                </option>
-
-                <option value="Cat">
-                    Cat
-                </option>
-
-                <option value="Other">
-                    Other
-                </option>
-
+            <label for="AnimalType">Animal Type: *</label>
+            <select id="AnimalType" name="AnimalType" required>
+                <option value="">Select animal type</option>
+                <option value="Dog">Dog</option>
+                <option value="Cat">Cat</option>
+                <option value="Other">Other</option>
             </select>
 
+            <label for="Breed">Breed:</label>
+            <input type="text" id="Breed" name="Breed">
 
-            <!-- Breed -->
-            <label>Breed</label>
+            <label for="Age">Age:</label>
+            <input type="text" id="Age" name="Age" placeholder="For example: 3 years">
 
-            <input
-                type="text"
-                name="Breed"
-            >
-
-
-            <!-- Age -->
-            <label>Age</label>
-
-            <input
-                type="text"
-                name="Age"
-                placeholder="For example: 3 years"
-            >
-
-
-            <!-- Gender -->
-            <label>Gender</label>
-
-            <select name="Gender">
-
-                <option value="">
-                    Select gender
-                </option>
-
-                <option value="Male">
-                    Male
-                </option>
-
-                <option value="Female">
-                    Female
-                </option>
-
+            <label for="Gender">Gender:</label>
+            <select id="Gender" name="Gender">
+                <option value="">Select gender</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
             </select>
 
+            <label for="SurrenderReason">Reason for Surrender: *</label>
+            <textarea id="SurrenderReason" name="SurrenderReason" rows="4" required></textarea>
 
-            <!-- Reason for surrender -->
-            <label>Reason for Surrender *</label>
+            <label for="Temperament">Pet Temperament:</label>
+            <textarea id="Temperament" name="Temperament" rows="3" placeholder="For example: Friendly, nervous or energetic"></textarea>
 
-            <textarea
-                name="SurrenderReason"
-                rows="4"
-                required
-            ></textarea>
-
-
-            <!-- Temperament -->
-            <label>Pet Temperament</label>
-
-            <textarea
-                name="Temperament"
-                rows="3"
-                placeholder="For example: Friendly, nervous or energetic"
-            ></textarea>
-
-
-            <!-- Medical information -->
-            <label>Medical Information</label>
-
-            <textarea
-                name="MedicalInformation"
-                rows="4"
-                placeholder="Please include any known medical conditions"
-            ></textarea>
-
+            <label for="MedicalInformation">Medical Information:</label>
+            <textarea id="MedicalInformation" name="MedicalInformation" rows="4" placeholder="Please include any known medical conditions"></textarea>
 
             <!-- Dynamic surrender fee -->
             <div class="surrender-fee">
-
-                <strong>
-                    Estimated Surrender Fee:
-                </strong>
-
-                <span id="feeAmount">
-
-                    R0.00
-
-                </span>
-
+                <strong>Estimated Surrender Fee:</strong>
+                <span id="feeAmount">R0.00</span>
             </div>
 
-
-            <div class="form-buttons">
-
-                <button
-                    type="submit"
-                    class="submit-btn"
-                >
-
-                    Submit Request
-
-                </button>
-
-
-                <button
-                    type="button"
-                    class="cancel-btn"
-                    onclick="window.location.href='profile.php';"
-                >
-
-                    Cancel
-
-                </button>
-
+            <!-- Side-by-side buttons -->
+            <div class="form-actions">
+                <button type="submit" class="submit-btn">Submit Request</button>
+                <button type="button" class="cancel-btn" onclick="window.location.href='profile.php';">Cancel</button>
             </div>
-
         </form>
-
     </div>
-
+    <?php include 'includes/footer.php'; ?>
 </main>
-
-
-<?php include 'includes/footer.php'; ?>
-
-
-<script>
-
-// Get the animal type dropdown
-const animalType =
-    document.getElementById("animalType");
-
-// Get the fee display area
-const feeAmount =
-    document.getElementById("feeAmount");
-
-
-// Update the displayed fee
-animalType.addEventListener(
-    "change",
-    function () {
-
-        let fee = 150;
-
-
-        // Change the fee depending on the animal type
-        if (this.value === "Dog") {
-
-            fee = 250;
-
-        } else if (this.value === "Cat") {
-
-            fee = 200;
-
-        }
-
-
-        // Display the fee
-        feeAmount.textContent =
-            "R" + fee.toFixed(2);
-
-    }
-);
-
-</script>
-
-
-</body>
-
-</html>

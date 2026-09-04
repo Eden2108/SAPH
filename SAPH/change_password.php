@@ -123,92 +123,34 @@ content="width=device-width,initial-scale=1.0">
 
 <?php include 'includes/navbar.php'; ?>
 
-<main class="profile-page">
-
-    <div class="profile-card">
-
+<main>
+    <div class="form-box">
         <h2>Change Password</h2>
-
-        <p class="form-intro">
-
-        Keep your account secure by creating
-        a strong password.
-
-        </p>
+        <p class="form-intro">Keep your account secure by creating a strong password.</p>
 
         <?php if($success){ ?>
+            <p class="success"><?php echo $success; ?></p>
+        <?php } ?>
 
-<div class="success-message">
+        <?php if($error){ ?>
+            <p class="error"><?php echo $error; ?></p>
+        <?php } ?>
 
-        <?php echo $success; ?>
+        <form method="POST">
+            <label for="current_password">Current Password</label>
+            <input type="password" id="current_password" name="current_password" required>
 
-</div>
+            <label for="new_password">New Password</label>
+            <input type="password" id="new_password" name="new_password" required>
 
-<?php } ?>
+            <label for="confirm_password">Confirm New Password</label>
+            <input type="password" id="confirm_password" name="confirm_password" required>
 
-    <?php if($error){ ?>
-
-    <p class="error">
-
-        <?php echo $error; ?>
-
-</p>
-
-    <?php } ?>
-
-<form method="POST">
-
-    <label>Current Password</label>
-
-        <input
-        type="password"
-        name="current_password"
-        required>
-
-    <label>New Password</label>
-
-            <input
-            type="password"
-            name="new_password"
-            required>
-
-<label>Confirm New Password</label>
-
-        <input
-        type="password"
-        name="confirm_password"
-        required>
-
-<div class="form-buttons">
-
-        <button
-        type="submit"
-        class="submit-btn">
-
-        Save Password
-
-        </button>
-
-        <button
-        type="button"
-        class="cancel-btn"
-        onclick="window.location.href='profile.php'">
-
-        Cancel
-
-        </button>
-
-</div>
-
-</form>
-
-</div>
-
+            <div class="form-actions">
+                <button type="submit" class="submit-btn">Save Password</button>
+                <button type="button" class="cancel-btn" onclick="window.location.href='profile.php'">Cancel</button>
+            </div>
+        </form>
+    </div>
+    <?php include 'includes/footer.php'; ?>
 </main>
-
-<?php include 'includes/footer.php'; ?>
-
-</body>
-
-</html>
-

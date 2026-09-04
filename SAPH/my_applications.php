@@ -409,7 +409,7 @@ $result = $stmt->get_result();
                     class="action-btn"
                 >
 
-                    Browse Available Pets
+                    View Available Pets
 
                 </a>
 
@@ -425,16 +425,7 @@ $result = $stmt->get_result();
 
         <!-- Back button -->
 
-        <div class="history-back">
-
-            <a
-                href="profile.php"
-                class="cancel-btn history-back-btn"
-            >
-
-                Back to Profile
-
-            </a>
+        <a href="profile.php" class="add-item-btn">Back To Profile</a>
 
         </div>
 

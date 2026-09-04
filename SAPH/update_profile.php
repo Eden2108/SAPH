@@ -126,124 +126,43 @@ $stmt->close();
 
 <?php include 'includes/navbar.php'; ?>
 
-<main class="profile-page">
+<main>
+    <div class="form-box">
+        <h2>Profile Details</h2>
+        <p class="form-intro">Keep your personal information up to date. Your details help us contact you regarding adoptions, donations and home inspections.</p>
 
-<div class="profile-card">
+        <?php if($success){ ?>
+            <p class="success"><?php echo $success; ?></p>
+        <?php } ?>
 
-<h2>Profile Details</h2>
+        <?php if($error){ ?>
+            <p class="error"><?php echo $error; ?></p>
+        <?php } ?>
 
-<p class="form-intro">
+        <form method="POST">
+            <label for="name">First Name</label>
+            <input type="text" id="name" name="name" value="<?php echo htmlspecialchars($user['name']); ?>" required>
 
-Keep your personal information up to date.
-Your details help us contact you regarding
-adoptions, donations and home inspections.
+            <label for="LastName">Last Name</label>
+            <input type="text" id="LastName" name="LastName" value="<?php echo htmlspecialchars($user['LastName']); ?>" required>
 
-</p>
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" value="<?php echo htmlspecialchars($user['email']); ?>" required>
 
-<?php if($success){ ?>
+            <label for="PhoneNumber">Phone Number</label>
+            <input type="text" id="PhoneNumber" name="PhoneNumber" value="<?php echo htmlspecialchars($user['PhoneNumber']); ?>" placeholder="082 123 4567">
 
-<div class="success-message">
+            <label for="Address">Home Address</label>
+            <textarea id="Address" name="Address" rows="4"><?php echo htmlspecialchars($user['Address']); ?></textarea>
 
-<?php echo $success; ?>
+            <label for="PostalCode">Postal Code</label>
+            <input type="text" id="PostalCode" name="PostalCode" value="<?php echo htmlspecialchars($user['PostalCode']); ?>" placeholder="2193">
 
-</div>
-
-<?php } ?>
-
-<?php if($error){ ?>
-
-<div class="error">
-
-<?php echo $error; ?>
-
-</div>
-
-<?php } ?>
-
-
-<form method="POST">
-
-<label>First Name</label>
-
-<input
-type="text"
-name="name"
-value="<?php echo htmlspecialchars($user['name']); ?>"
-required>
-
-
-<label>Last Name</label>
-
-<input
-type="text"
-name="LastName"
-value="<?php echo htmlspecialchars($user['LastName']); ?>"
-required>
-
-
-<label>Email Address</label>
-
-<input
-type="email"
-name="email"
-value="<?php echo htmlspecialchars($user['email']); ?>"
-required>
-
-
-<label>Phone Number</label>
-
-<input
-type="text"
-name="PhoneNumber"
-value="<?php echo htmlspecialchars($user['PhoneNumber']); ?>"
-placeholder="082 123 4567">
-
-
-<label>Home Address</label>
-
-<textarea
-name="Address"
-rows="4"
-placeholder="Enter your home address"><?php echo htmlspecialchars($user['Address']); ?></textarea>
-
-
-<label>Postal Code</label>
-
-<input
-type="text"
-name="PostalCode"
-value="<?php echo htmlspecialchars($user['PostalCode']); ?>"
-placeholder="2193">
-
-
-<br>
-
-<div class="form-buttons">
-
-    <button
-        type="submit"
-        class="submit-btn">
-        Save Changes
-    </button>
-
-    <button
-        type="button"
-        class="cancel-btn"
-        onclick="window.location.href='profile.php';">
-        Back to Profile
-    </button>
-
-</div>
-
-</form>
-
-</div>
-
+            <div class="form-actions">
+                <button type="submit" class="submit-btn">Save Changes</button>
+                <button type="button" class="cancel-btn" onclick="window.location.href='profile.php'">Back to Profile</button>
+            </div>
+        </form>  
+    </div>
+    <?php include 'includes/footer.php'; ?>
 </main>
-
-<?php include 'includes/footer.php'; ?>
-
-</body>
-
-</html>
-

@@ -344,86 +344,123 @@ button:hover{
 }
 
 
-/* ==========================
-   FORM CONTAINER
-========================== */
-
 /* ==========================================
-   GENERAL FORM LAYOUT
+   FORM BOX (main wrapper for all forms)
    ========================================== */
-
 .form-box {
-    max-width: 700px;
-    margin: 40px auto;
-    padding: 35px;
-
-    background: #fffdf9;
-
-    border-radius: 15px;
-
-    box-shadow:
-        0 5px 20px rgba(0, 0, 0, 0.08);
-
-    border: 1px solid #e4ddd3;
+    max-width: 700px;          /* keeps forms centered and not too wide */
+    margin: 40px auto;         /* centers vertically with spacing */
+    padding: 35px;             /* inner spacing */
+    background: #fffdf9;       /* light background */
+    border-radius: 15px;       /* rounded corners */
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08); /* subtle shadow */
+    border: 1px solid #e4ddd3; /* soft border */
 }
 
-.form-box label {
-    display: block;
-
-    margin-bottom: 8px;
-    margin-top: 15px;
-
-    font-weight: 600;
-
-    color: #2f2f2f;
-}
-
+/* Headings inside forms */
 .form-box h2 {
     text-align: center;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
+    font-size: 28px;
+    color: #008080;
 }
 
-
-.form-box .error{
-
-    background:#fdeaea;
-
-    color:#c62828;
-
-    border:1px solid #ef9a9a;
-
-    padding:12px;
-
-    border-radius:8px;
-
-    margin-bottom:20px;
-
-}
-
+/* Intro text */
 .form-intro {
     text-align: center;
-
-    margin-bottom: 25px;
-
     color: #666;
-
     line-height: 1.6;
+    margin-bottom: 25px;
 }
 
-/* ==========================
-   FORM INPUTS
-========================== */
+/* Labels */
+.form-box label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #333;
+}
 
-.form-box input,
+/* Inputs and selects */
+.form-box input[type="text"],
+.form-box input[type="email"],
+.form-box input[type="password"],
+.form-box input[type="tel"],
+.form-box input[type="date"],
+.form-box input[type="number"],
 .form-box textarea,
 .form-box select {
     width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #d9cec3;
+    border-radius: 10px;
+    font-size: 15px;
+    background: #fffdfb;
+    transition: 0.25s;
 }
 
-
-.form-box button {
-    margin-top: 10px;
+/* Focus states */
+.form-box input:focus,
+.form-box textarea:focus,
+.form-box select:focus {
+    outline: none;
+    border-color: #008080;
+    box-shadow: 0 0 0 3px rgba(0,128,128,0.1);
 }
+
+/* Textarea resizing */
+.form-box textarea {
+    resize: vertical;
+}
+
+/* Submit button */
+.submit-btn {
+    display: block;
+    width: 100%;
+    background: #008080;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+    text-align: center;
+}
+
+.submit-btn:hover {
+    background: #006666;
+}
+
+/* Error / success messages */
+.error {
+    background: #fdeaea;
+    color: #c62828;
+    border: 1px solid #ef9a9a;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.success {
+    background: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Responsive tweaks */
+@media (max-width: 700px) {
+    .form-box {
+        padding: 20px;
+    }
+}
+
 
 /* ===LAYOUT FIX FOR FOOTER=== */
 html, body {
@@ -1760,3 +1797,4 @@ PASSWORD
     }
 
 }
+

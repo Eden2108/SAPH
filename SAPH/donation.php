@@ -13,23 +13,18 @@ include 'includes/navbar.php';
 </head>
 <body>
 
-<main class="donation-container">
-    <h2>Make a Donation</h2>
-    <p class="form-intro">Your support helps us provide second chances for every animal in need.</p>
-    
-    <form action="donate.php" method="POST" class="donation-form">
-        
-        <div class="form-group">
+<main>
+    <div class="form-box">
+        <h2>Make a Donation</h2>
+        <p class="form-intro">Your support helps us provide second chances for every animal in need.</p>
+
+        <form action="donate.php" method="POST">
             <label for="donor_name">Your Name:</label>
-            <input type="text" id="donor_name" name="donor_name" required placeholder="Enter your full name"><br>
-        </div>
+            <input type="text" id="donor_name" name="donor_name" required placeholder="Enter your full name">
 
-        <div class="form-group">
             <label for="donation_amount">Donation Amount (R):</label>
-            <input type="number" id="donation_amount" name="donation_amount" min="1" step="0.01" required placeholder="Enter amount"><br></br>
-        </div>
+            <input type="number" id="donation_amount" name="donation_amount" min="1" step="0.01" required placeholder="Enter amount">
 
-        <div class="form-group">
             <label for="payment_method">Payment Method:</label>
             <select id="payment_method" name="payment_method" required>
                 <option value="" disabled selected>Select payment method</option>
@@ -38,14 +33,32 @@ include 'includes/navbar.php';
                 <option value="EFT">EFT / Bank Transfer</option>
                 <option value="PayPal">PayPal</option>
             </select>
-        </div>
+
+            <div class="form-actions">
+                <button type="submit" class="submit-btn">Submit Donation</button>
+                <button type="button" class="login-btn" onclick="window.location.href='index.php'">Back To Home</button>
+            </div>
+        </form>
+    </div>
+</main>
 
         
 
         <button type="submit" class="submit-btn" onclick="alert('Thank you for your donation! Please click OK to be redirected to the Homepage...'); window.location.href='index.php'; return false;">Submit Donation</button>
         
-    </form>
-    <a href="index.php" class="add-item-btn">Back To Home</a>
+    <div class="form-actions">
+    <!-- Back to the SAME pet's details -->
+    <a href="pet_details.php?petID=<?php echo $_GET['petID']; ?>" class="login-btn">
+        Back to Pet Details
+    </a>
+
+    <!-- Back to the full listings -->
+    <a href="pet_listings.php" class="submit-btn">
+        Back to Available Pets
+    </a>
+</div>
+
+    <?php include 'includes/footer.php'; ?>
 </main>
 </body>
 </html>

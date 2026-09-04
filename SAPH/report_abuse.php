@@ -85,329 +85,119 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <?php include 'includes/navbar.php'; ?>
 
-<main class="form-container">
-
-    <div class="form-card">
+<main>
+    <div class="form-box">
 
         <h2>Report Suspected Animal Abuse</h2>
 
         <p class="form-intro">
             If you suspect that an animal is being neglected,
             mistreated, or placed in danger, please provide as
-            much information as possible. 
+            much information as possible.
         </p>
-<br>
+
         <?php if (!empty($message)): ?>
-
-            <div class="alert <?php echo $message_class; ?>">
+            <p class="<?php echo $message_class; ?>">
                 <?php echo htmlspecialchars($message); ?>
-            </div>
-
+            </p>
         <?php endif; ?>
 
+        <form method="POST" action="report_abuse.php">
 
-        <form method="POST"
-              action="report_abuse.php">
-
-
-            <!-- REPORTER INFORMATION -->
-<div class="information-box">
-
+            <!-- Important Information -->
+            <div class="information-box">
                 <h3>Important Information:</h3>
-
-                <p>
-                    Please contact us if you know of any animal that is being neglected or treated badly. By reporting cruelty, you help to free them from suffering.
-                </p>
-            <br>
-                <p>
-                  We will act – but we can only do so if we know about it. We depend on people like you to be our ‘eyes and ears’ in your community.
-                </p>
-            <br>
-                <p>
-                    Your personal information will remain confidential.
-                    Providing us with contact details allows us to provide you with feedback and also to contact you should we require further information. 
-                    <br></br>
-                    Please also include what animals your complaint is relating to, how many and if possible a description of the animal(s) to allow us to easily identify them.
-            <br></br>
-                    SAPHs are obligated by law to admit any animal brought in. No animal may be turned away.
-                </p>
-
+                <p>Please contact us if you know of any animal that is being neglected or treated badly. By reporting cruelty, you help to free them from suffering.</p>
+                <p>We depend on people like you to be our ‘eyes and ears’ in your community. Your personal information will remain confidential.</p>
+                <p>Please include details about the animals (type, number, description) to help us identify them. SAPHs are obligated by law to admit any animal brought in. No animal may be turned away.</p>
             </div>
-<br><br>
-            <div class="form-section">
 
+            <!-- Reporter Information -->
+            <div class="form-section">
                 <h3>1. Your Information:</h3>
-
-                <p class="section-description">
-                    Your contact information may be used if
-                    additional information is required.
-                </p>
-
-
                 <div class="input-group">
-
-                    <label for="reporter_name">
-                        Full Name
-                    </label>
-
-                    <input
-                        type="text"
-                        id="reporter_name"
-                        name="reporter_name"
-                        required
-                        placeholder="Enter your full name">
-
+                    <label for="reporter_name">Full Name</label>
+                    <input type="text" id="reporter_name" name="reporter_name" required>
                 </div>
-
-
                 <div class="input-row">
-
                     <div class="input-group">
-
-                        <label for="reporter_email">
-                            Email Address
-                        </label>
-
-                        <input
-                            type="email"
-                            id="reporter_email"
-                            name="reporter_email"
-                            required
-                            placeholder="example@email.com">
-
+                        <label for="reporter_email">Email Address</label>
+                        <input type="email" id="reporter_email" name="reporter_email" required>
                     </div>
-
-
                     <div class="input-group">
-
-                        <label for="reporter_phone">
-                            Phone Number
-                        </label>
-                <br></br>
-                        <input
-                            type="tel"
-                            id="reporter_phone"
-                            name="reporter_phone"
-                            placeholder="012 345 6789">
-
+                        <label for="reporter_phone">Phone Number</label>
+                        <input type="tel" id="reporter_phone" name="reporter_phone">
                     </div>
-
                 </div>
-
             </div>
 
-<br></br>
-
-            <!-- INCIDENT INFORMATION -->
-
+            <!-- Incident Information -->
             <div class="form-section">
-
                 <h3>2. Incident Information:</h3>
-
-
                 <div class="input-group">
-
-                    <label for="incident_address">
-                        Location or Address of Incident
-                    </label>
-
-                    <input
-                        type="text"
-                        id="incident_address"
-                        name="incident_address"
-                        required
-                        placeholder="Enter the address or location">
-
+                    <label for="incident_address">Location or Address of Incident</label>
+                    <input type="text" id="incident_address" name="incident_address" required>
                 </div>
-
-
                 <div class="input-row">
-
                     <div class="input-group">
-
-                        <label for="animal_type">
-                            Type of Animal
-                        </label>
-
-                        <select
-                            id="animal_type"
-                            name="animal_type"
-                            required>
-
-                            <option value="" disabled selected>
-                                Select animal type
-                            </option>
-
+                        <label for="animal_type">Type of Animal</label>
+                        <select id="animal_type" name="animal_type" required>
+                            <option value="" disabled selected>Select animal type</option>
                             <option value="Dog">Dog</option>
-
                             <option value="Cat">Cat</option>
-
                             <option value="Bird">Bird</option>
-
-                            <option value="Farm Animal">
-                                Farm Animal
-                            </option>
-
-                            <option value="Reptile">
-                                Reptile
-                            </option>
-
-                            <option value="Other">
-                                Other
-                            </option>
-
+                            <option value="Farm Animal">Farm Animal</option>
+                            <option value="Reptile">Reptile</option>
+                            <option value="Other">Other</option>
                         </select>
-
                     </div>
-
-
                     <div class="input-group">
-
-                        <label for="incident_date">
-                            Date of Incident
-                        </label>
-                <br></br>
-                        <input
-                            type="date"
-                            id="incident_date"
-                            name="incident_date">
-
+                        <label for="incident_date">Date of Incident</label>
+                        <input type="date" id="incident_date" name="incident_date">
                     </div>
-
                 </div>
-
-<br></br>
                 <div class="input-group">
-
-                    <label for="abuse_type">
-                        Type of Suspected Abuse
-                    </label>
-
-                    <select
-                        id="abuse_type"
-                        name="abuse_type"
-                        required>
-
-                        <option value="" disabled selected>
-                            Select suspected abuse
-                        </option>
-
-                        <option value="Neglect">
-                            Neglect
-                        </option>
-
-                        <option value="Physical Abuse">
-                            Physical Abuse
-                        </option>
-
-                        <option value="Lack of Food or Water">
-                            Lack of Food or Water
-                        </option>
-
-                        <option value="Unsafe Living Conditions">
-                            Unsafe Living Conditions
-                        </option>
-
-                        <option value="Animal Abandonment">
-                            Animal Abandonment
-                        </option>
-
-                        <option value="Animal Fighting">
-                            Suspected Animal Fighting
-                        </option>
-
-                        <option value="Other">
-                            Other Concern
-                        </option>
-
+                    <label for="abuse_type">Type of Suspected Abuse</label>
+                    <select id="abuse_type" name="abuse_type" required>
+                        <option value="" disabled selected>Select suspected abuse</option>
+                        <option value="Neglect">Neglect</option>
+                        <option value="Physical Abuse">Physical Abuse</option>
+                        <option value="Lack of Food or Water">Lack of Food or Water</option>
+                        <option value="Unsafe Living Conditions">Unsafe Living Conditions</option>
+                        <option value="Animal Abandonment">Animal Abandonment</option>
+                        <option value="Animal Fighting">Suspected Animal Fighting</option>
+                        <option value="Other">Other Concern</option>
                     </select>
-
                 </div>
-
-
                 <div class="input-group">
-
-                    <label for="incident_description">
-                        Describe What You Observed
-                    </label>
-
-                    <textarea
-                        id="incident_description"
-                        name="incident_description"
-                        rows="6"
-                        required
-                        placeholder="Please describe the situation and provide as much detail as possible..."></textarea>
-
+                    <label for="incident_description">Describe What You Observed</label>
+                    <textarea id="incident_description" name="incident_description" rows="6" required></textarea>
                 </div>
-
             </div>
 
+            <!-- Urgency -->
+            <div class="form-section">
+                <h3>3. Urgency Assessment:</h3>
+                <div class="abuse-urgency-options">
+                    <div class="abuse-urgency-option">
+                        <input type="radio" id="urgency_low" name="urgency_level" value="Low" required>
+                        <label for="urgency_low">Low - Concern about welfare, but no immediate danger.</label>
+                    </div>
+                    <div class="abuse-urgency-option">
+                        <input type="radio" id="urgency_moderate" name="urgency_level" value="Moderate">
+                        <label for="urgency_moderate">Moderate - Ongoing neglect or unsafe conditions.</label>
+                    </div>
+                    <div class="abuse-urgency-option">
+                        <input type="radio" id="urgency_high" name="urgency_level" value="High">
+                        <label for="urgency_high">High - Immediate danger or severe abuse.</label>
+                    </div>
+                </div>
+            </div>
 
-           <!-- URGENCY -->
-
-<div class="form-section">
-
-    <h3>3. Urgency Assessment:</h3>
-
-    <p class="section-description">
-        Please select the option that best describes the current situation of the animal.
-    </p>
-<br>
-    <div class="abuse-urgency-options">
-
-        <div class="abuse-urgency-option">
-            <input
-                type="radio"
-                id="urgency_low"
-                name="urgency_level"
-                value="Low"
-                required>
-
-            <label for="urgency_low">Low - Concern about the animal's welfare, but there is no immediate danger.</label>
-        </div>
-<br>
-        <div class="abuse-urgency-option">
-            <input
-                type="radio"
-                id="urgency_moderate"
-                name="urgency_level"
-                value="Moderate">
-
-            <label for="urgency_moderate">Moderate - Ongoing neglect, lack of care, or unsafe living conditions.</label>
-        </div>
-<br>
-        <div class="abuse-urgency-option">
-            <input
-                type="radio"
-                id="urgency_high"
-                name="urgency_level"
-                value="High">
-
-            <label for="urgency_high">High - Ongoing neglect, lack of care, or unsafe living conditions.</label>
-        </div>
-
-    </div>
-
-</div>
-<br>
-            <button
-                type="submit"
-                class="submit-btn">
-
-                Submit Abuse Report
-
-            </button>
-
+            <button type="submit" class="submit-btn">Submit Abuse Report</button>
         </form>
 
+        <a href="index.php" class="add-item-btn">Back To Home</a>
     </div>
-
+    <?php include 'includes/footer.php'; ?>
 </main>
-
- <a href="index.php" class="add-item-btn">Back To Home</a>
-
-<?php include 'includes/footer.php'; ?>
-
-</body>
-
-</html>

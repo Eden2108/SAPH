@@ -983,9 +983,9 @@ No Yard / Apartment
 
 </div>
 
-</main>
+<a href="pet_listings.php" class="add-item-btn">Back to Available Pets</a>
 
-<a href="pet_details.php" class="add-item-btn">Back To Pet Details</a>
+
 <?php include 'includes/footer.php'; ?>
 
 
