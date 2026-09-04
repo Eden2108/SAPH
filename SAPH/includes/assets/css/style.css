@@ -148,21 +148,28 @@ vertical-align: middle;
     background: #72427D;
 
     display: flex;
-    align-items: center;
-    justify-content: center;
+    align-items: center;      /* vertical centering */
+    justify-content: center;  /* horizontal centering */
 
     text-decoration: none;
-    font-size: 20px;
+    font-size: 28px;          /* size of emoji */
+    line-height: 1;           /* reset default line-height */
+    color: white;             /* emoji visible on purple background */
 
     transition: 0.3s;
 }
 
+.navbar-avatar span {
+    display: inline-block;
+    line-height: 1;           /* ensures emoji baseline is corrected */
+}
+
+
 .navbar-avatar:hover {
     transform: scale(1.08);
-
-    box-shadow:
-        0 4px 8px rgba(0, 0, 0, 0.20);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.20);
 }
+
 
 /* BANNER */
 

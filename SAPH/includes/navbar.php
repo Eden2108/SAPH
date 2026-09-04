@@ -102,7 +102,7 @@ $userRole = $_SESSION['Role'] ?? '';
                 <!-- ADMIN -->
                 <?php elseif ($isLoggedIn && $userRole === 'Admin'): ?>
 
-                 <a href="admin_dashboard.php" class="navbar-avatar" title="Administrator Dashboard">👤</a>
+                 <a href="admin_dashboard.php" class="admin-avatar" title="Administrator Dashboard">👤</a>
 
 
                 <!-- VOLUNTEER -->
