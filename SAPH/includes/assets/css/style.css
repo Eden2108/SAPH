@@ -1250,3 +1250,294 @@ PASSWORD
     margin-bottom:25px;
 
 }
+
+/* ==========================================
+   ADOPTION HISTORY
+========================================== */
+
+.history-container{
+
+    width:90%;
+    max-width:1000px;
+
+    margin:0 auto;
+
+}
+
+
+/* Introduction text */
+
+.history-intro{
+
+    text-align:center;
+
+    color:#666;
+
+    margin-bottom:35px;
+
+}
+
+
+/* Adoption application card */
+
+.adoption-history-card{
+
+    display:flex;
+
+    gap:25px;
+
+    background:#ffffff;
+
+    padding:25px;
+
+    margin-bottom:25px;
+
+    border-radius:16px;
+
+    box-shadow:0 5px 18px rgba(0,0,0,0.08);
+
+}
+
+
+/* Pet image */
+
+.history-pet-image{
+
+    width:220px;
+
+    height:220px;
+
+    flex-shrink:0;
+
+    overflow:hidden;
+
+    border-radius:14px;
+
+    background:#f3f3f3;
+
+}
+
+
+.history-pet-image img{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+}
+
+
+/* Placeholder if there is no image */
+
+.no-pet-image{
+
+    width:100%;
+
+    height:100%;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:70px;
+
+}
+
+
+/* Application information */
+
+.history-details{
+
+    flex:1;
+
+}
+
+
+.history-details h3{
+
+    font-size:26px;
+
+    color:#006d6f;
+
+    margin-bottom:15px;
+
+}
+
+
+.history-details p{
+
+    margin-bottom:10px;
+
+    color:#555;
+
+    line-height:1.5;
+
+}
+
+
+/* Adoption reason */
+
+.adoption-reason{
+
+    background:#f6f1e7;
+
+    padding:14px;
+
+    border-radius:10px;
+
+    margin-top:15px;
+
+}
+
+
+/* Status badge */
+
+.status-badge{
+
+    display:inline-block;
+
+    padding:6px 12px;
+
+    border-radius:20px;
+
+    font-size:13px;
+
+    font-weight:bold;
+
+}
+
+
+/* Pending status */
+
+.status-badge.pending{
+
+    background:#fff3cd;
+
+    color:#856404;
+
+}
+
+
+/* Approved status */
+
+.status-badge.approved{
+
+    background:#d4edda;
+
+    color:#155724;
+
+}
+
+
+/* Rejected status */
+
+.status-badge.rejected{
+
+    background:#f8d7da;
+
+    color:#721c24;
+
+}
+
+
+/* Home inspection box */
+
+.inspection-info{
+
+    background:#e8f4f4;
+
+    border-left:4px solid #008080;
+
+    padding:15px;
+
+    margin-top:18px;
+
+    border-radius:8px;
+
+}
+
+
+.inspection-info p{
+
+    margin:6px 0 0;
+
+}
+
+
+/* Empty history */
+
+.empty-history{
+
+    background:#ffffff;
+
+    padding:50px 30px;
+
+    text-align:center;
+
+    border-radius:16px;
+
+    box-shadow:0 5px 18px rgba(0,0,0,0.07);
+
+}
+
+
+.empty-icon{
+
+    font-size:60px;
+
+    margin-bottom:15px;
+
+}
+
+
+.empty-history h3{
+
+    color:#006d6f;
+
+}
+
+
+/* Back button */
+
+.history-back{
+
+    text-align:center;
+
+    margin-top:30px;
+
+}
+
+
+.history-back-btn{
+
+    display:inline-block;
+
+    text-decoration:none;
+
+}
+
+
+/* Mobile responsiveness */
+
+@media(max-width:700px){
+
+    .adoption-history-card{
+
+        flex-direction:column;
+
+    }
+
+
+    .history-pet-image{
+
+        width:100%;
+
+        height:250px;
+
+    }
+
+}
