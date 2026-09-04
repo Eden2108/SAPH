@@ -107,7 +107,7 @@ $userRole = $_SESSION['Role'] ?? '';
                     <a
                         href="admin_dashboard.php"
                         class="navbar-avatar"
-                        title="Admin Profile">
+                        title="My Profile">
 
                         <span class="navbar-avatar">
                             👤

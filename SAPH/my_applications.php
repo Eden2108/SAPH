@@ -156,7 +156,7 @@ $result = $stmt->get_result();
                         ?>
 
                             <img
-                                src="uploads/<?php
+                                src="includes/assets/images/<?php
                                 echo htmlspecialchars(
                                     $application['Image']
                                 );
