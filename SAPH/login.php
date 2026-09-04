@@ -8,23 +8,18 @@ include 'DBConn.php';
 $error = "";
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-
     $email = trim($_POST['email']);
     $password = $_POST['password'];
     $role = $_POST['role'];
 
     if ($role === 'Admin') {
-
         $sql = "SELECT 
                     AdminID AS UserID,
                     Username AS name,
-                    PermissionLevel AS Role,
                     Password AS PasswordHash
                 FROM admin
                 WHERE Email = ?";
-
     } elseif ($role === 'User') {
-
         $sql = "SELECT 
                     UserID,
                     name,
@@ -33,49 +28,42 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     password AS PasswordHash
                 FROM users
                 WHERE email = ?";
-
     } else {
         $error = "Please select a valid role.";
     }
 
     if (empty($error)) {
-
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("s", $email);
         $stmt->execute();
-
         $result = $stmt->get_result();
 
         if ($result->num_rows === 1) {
-
             $user = $result->fetch_assoc();
 
             if (password_verify($password, $user['PasswordHash'])) {
-
                 $_SESSION['UserID'] = $user['UserID'];
 
+                // Build full name if user
                 $_SESSION['FullName'] = isset($user['LastName'])
                     ? $user['name'] . " " . $user['LastName']
                     : $user['name'];
 
-                $_SESSION['Role'] = $user['Role'];
+                // Force role consistency
+                $_SESSION['Role'] = $role;
 
                 if ($role === 'Admin') {
                     header("Location: admin_dashboard.php");
                 } else {
                     header("Location: index.php");
                 }
-
                 exit();
-
             } else {
                 $error = "Invalid email or password.";
             }
-
         } else {
             $error = "Invalid email or password.";
         }
-
         $stmt->close();
     }
 }

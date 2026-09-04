@@ -731,40 +731,36 @@ footer {
     margin-top: 10px;
 }
 
-/* --- ADMIN DASHBOARD STYLES --- */
+/*Admin card styles*/
 
-/* Dashboard Layout Wrapper */
 .admin-dashboard-container {
     max-width: 1200px;
     margin: 40px auto;
     padding: 0 20px;
 }
 
-/* Dashboard Title Styling */
 .admin-dashboard-container h1 {
     font-size: 32px;
-    color: #f5f5f5; /* Matching your --text-main */
+    color: #f5f5f5;
     margin-bottom: 30px;
     border-bottom: 2px solid rgba(255, 255, 255, 0.1);
     padding-bottom: 10px;
 }
 
-/* Grid for the Menu Cards */
 .dashboard-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 28px;
 }
 
-/* Individual Dashboard Cards */
 .dashboard-card {
-    background: linear-gradient(135deg, rgba(15, 32, 67, 0.8), rgba(32, 58, 67, 0.8)); /* Using your system gradients */
-    border: 1px solid rgba(255, 255, 255, 0.15); /* Your --card-border */
+    background: linear-gradient(135deg, rgba(15, 32, 67, 0.8), rgba(32, 58, 67, 0.8));
+    border: 1px solid rgba(255, 255, 255, 0.15);
     border-radius: 14px;
     padding: 30px;
     text-align: left;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    text-decoration: none; /* Removes link underline */
+    text-decoration: none;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -773,33 +769,24 @@ footer {
 .dashboard-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
-    border-color: #00b4db; /* Accent teal glowing border */
+    border-color: #00b4db;
 }
 
-/* Card Heading (Pets, Users, Donations) */
 .dashboard-card h3 {
     font-size: 24px;
-    color: #00b4db; /* Accent color to pop */
+    color: #00b4db;
     margin: 0 0 12px 0;
 }
 
-/* Card Descriptions */
 .dashboard-card p {
     font-size: 15px;
-    color: #b0bec5; 
+    color: #b0bec5;
     margin: 0;
     line-height: 1.5;
 }
 
-/* =========================================
-   ABUSE REPORT URGENCY OPTIONS
-========================================= */
 
-.abuse-urgency-options {
-    display: block !important;
-    width: 100%;
-    margin-top: 20px;
-}
+
 
 .abuse-urgency-option {
     display: flex !important;

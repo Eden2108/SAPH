@@ -43,17 +43,9 @@ include 'includes/navbar.php';
 </main>
 
         
-
-        <button type="submit" class="submit-btn" onclick="alert('Thank you for your donation! Please click OK to be redirected to the Homepage...'); window.location.href='index.php'; return false;">Submit Donation</button>
-        
     <div class="form-actions">
-    <!-- Back to the SAME pet's details -->
-    <a href="pet_details.php?petID=<?php echo $_GET['petID']; ?>" class="login-btn">
-        Back to Pet Details
-    </a>
-
     <!-- Back to the full listings -->
-    <a href="pet_listings.php" class="submit-btn">
+    <a href="pet_listings.php" class="add-item-btn">
         Back to Available Pets
     </a>
 </div>

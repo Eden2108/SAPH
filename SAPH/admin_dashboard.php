@@ -1,128 +1,97 @@
 <?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 include 'DBConn.php';
-?>
-<?php include 'includes/navbar.php'; ?>
 
+// Only allow admins
+if (!isset($_SESSION['UserID']) || ($_SESSION['Role'] ?? '') !== 'Admin') {
+    header("Location: login.php");
+    exit();
+}
+
+// Fetch live counts
+$petCount = $conn->query("SELECT COUNT(*) AS total FROM pet")->fetch_assoc()['total'];
+$appCount = $conn->query("SELECT COUNT(*) AS total FROM adoptionapplication")->fetch_assoc()['total'];
+$volCount = $conn->query("SELECT COUNT(*) AS total FROM volunteer")->fetch_assoc()['total'];
+$donationSum = $conn->query("SELECT SUM(amount) AS total FROM donation")->fetch_assoc()['total'];
+$abuseCount = $conn->query("SELECT COUNT(*) AS total FROM abuse_reports")->fetch_assoc()['total'];
+?>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Admin Dashboard</title>
-    <link rel="stylesheet" href="includes/assets/css/style.css">
+    <meta charset="UTF-8">
+    <title>Admin Dashboard | Save-A-Pet HUB</title>
+    <link rel="stylesheet" href="includes/assets/css/admin.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
+<div class="admin-container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <h2>Admin Panel</h2>
+        <ul>
+            <li><a href="admin_dashboard.php"><i class="fas fa-home"></i> Dashboard</a></li>
+            <li><a href="pet_management.php"><i class="fas fa-dog"></i> Manage Pets</a></li>
+            <li><a href="application_management.php"><i class="fas fa-file-alt"></i> Applications</a></li>
+            <li><a href="donation_management.php"><i class="fas fa-hand-holding-heart"></i> Donations</a></li>
+            <li><a href="volunteer_admin.php"><i class="fas fa-users"></i> Volunteers</a></li>
+            <li><a href="abuse_report_management.php"><i class="fas fa-exclamation-triangle"></i> Welfare Reports</a></li>
+            <li><a href="surrender_management.php"><i class="fas fa-paw"></i> Pet Surrenders</a></li>
+            <li><a href="reports.php"><i class="fas fa-chart-line"></i> Reports</a></li>
+            <li><a href="logout.php" class="logout-link"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+        </ul>
+    </aside>
 
-<main class="dashboard">
+    <!-- Main Content -->
+    <main class="dashboard">
+        <h1>Administrator Dashboard</h1>
+        <p class="welcome-text">Welcome, <?php echo htmlspecialchars($_SESSION['FullName']); ?> 👋</p>
 
-    <h2>Administrator Dashboard</h2>
-
-    <div class="dashboard-grid">
-
-    <div class="dashboard-card">
-        <h3>Manage Pets</h3>
-
-        <p>
-            Add, edit and update pet records.
-        </p>
-
-        <a href="pet_management.php">
-            <button>Manage Pets</button>
-        </a>
-    </div>
-
-
-    <div class="dashboard-card">
-        <h3>Adoption Applications</h3>
-
-        <p>
-            Review and manage adoption applications.
-        </p>
-
-        <a href="application_management.php">
-            <button>View Applications</button>
-        </a>
-    </div>
-
-
-    <div class="dashboard-card">
-        <h3>Donations</h3>
-
-        <p>
-            View and monitor donation records.
-        </p>
-
-        <a href="donation_management.php">
-            <button>View Donations</button>
-        </a>
-    </div>
-
-
-    <div class="dashboard-card">
-        <h3>Volunteer Management</h3>
-
-        <p>
-            Review volunteers and volunteer registrations.
-        </p>
-
-        <a href="volunteer_admin.php">
-            <button>Manage Volunteers</button>
-        </a>
-    </div>
-
-
-    <div class="dashboard-card">
-        <h3>Animal Abuse Reports</h3>
-
-        <p>
-            Review reported animal welfare concerns.
-        </p>
-
-        <a href="abuse_report_management.php">
-            <button>View Abuse Reports</button>
-        </a>
-    </div>
-
-
-    <div class="dashboard-card">
-        <h3>Pet Surrenders</h3>
-
-        <p>
-            Review pet surrender requests and records.
-        </p>
-
-        <a href="surrender_management.php">
-            <button>View Surrenders</button>
-        </a>
-    </div>
-
-
-    <div class="dashboard-card">
-        <h3>Reports</h3>
-
-        <p>
-            View adoption, donation and intake reports.
-        </p>
-
-        <a href="reports.php">
-            <button>View Reports</button>
-        </a>
-    </div>
-
-
-    <div class="dashboard-card">
-        <h3>Admin Profile</h3>
-
-        <p>
-            Manage administrator account information.
-        </p>
-
-        <a href="admin_profile.php">
-            <button>View Profile</button>
-        </a>
-    </div>
-
+        <div class="card-grid">
+            <div class="card blue">
+                <div class="card-icon"><i class="fas fa-dog"></i></div>
+                <h3>Total Pets</h3>
+                <p><?php echo $petCount; ?></p>
+                <a href="pet_management.php">More info</a>
+            </div>
+            <div class="card teal">
+                <div class="card-icon"><i class="fas fa-file-alt"></i></div>
+                <h3>Total Applications</h3>
+                <p><?php echo $appCount; ?></p>
+                <a href="application_management.php">More info</a>
+            </div>
+            <div class="card green">
+                <div class="card-icon"><i class="fas fa-users"></i></div>
+                <h3>Total Volunteers</h3>
+                <p><?php echo $volCount; ?></p>
+                <a href="volunteer_admin.php">More info</a>
+            </div>
+            <div class="card yellow">
+                <div class="card-icon"><i class="fas fa-hand-holding-heart"></i></div>
+                <h3>Total Donations</h3>
+                <p>R<?php echo number_format($donationSum, 2); ?></p>
+                <a href="donation_management.php">More info</a>
+            </div>
+            <div class="card red">
+                <div class="card-icon"><i class="fas fa-exclamation-triangle"></i></div>
+                <h3>Welfare Reports</h3>
+                <p><?php echo $abuseCount; ?></p>
+                <a href="abuse_report_management.php">More info</a>
+            </div>
+            <div class="card purple">
+            <div class="card-icon"><i class="fas fa-paw"></i></div>
+            <h3>Pet Surrenders</h3>
+            <p><?php 
+                $surrenderCount = $conn->query("SELECT COUNT(*) AS total FROM pet_surrenders")->fetch_assoc()['total']; 
+                echo $surrenderCount; 
+            ?></p>
+            <a href="surrender_management.php">More info</a>
+        </div>
+        </div>
+    </main>
 </div>
-<a href="index.php" class="add-item-btn">Back To Home</a>
-</main>
 <?php include 'includes/footer.php'; ?>
 </body>
 </html>
