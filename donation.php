@@ -35,8 +35,7 @@ include 'includes/navbar.php';
             </select>
 
             <div class="form-actions">
-                <button type="submit" class="submit-btn">Submit Donation</button>
-                <button type="button" class="login-btn" onclick="window.location.href='index.php'">Back To Home</button>
+                <button type="submit" class="cancel-btn">Submit Donation</button>
             </div>
         </form>
     </div>
@@ -45,8 +44,8 @@ include 'includes/navbar.php';
         
     <div class="form-actions">
     <!-- Back to the full listings -->
-    <a href="pet_listings.php" class="add-item-btn">
-        Back to Available Pets
+    <a href="index.php" class="add-item-btn">
+        Back To Home
     </a>
 </div>
 

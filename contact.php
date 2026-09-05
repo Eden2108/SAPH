@@ -50,7 +50,7 @@
             </button>
 
         </form>
-
+<a href="index.php" class="add-item-btn">Back To Home</a>
     </div>
 <?php include 'includes/footer.php'; ?>
 </main>
