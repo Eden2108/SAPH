@@ -1,5 +1,5 @@
 <?php
-$host = "sql104.infinityfree.com";   // InfinityFree host
+$host = "sql104.epizy.com";   // InfinityFree host
 $user = "if0_42835585";      // Our DB username
 $password = "VGD8qrba9GAvG";  // Our DB password
 $dbname = "if0_42835585_save_a_pet_hub";  // Our DB name
