@@ -30,7 +30,7 @@ $abuseCount = $conn->query("SELECT COUNT(*) AS total FROM abuse_reports")->fetch
 <div class="admin-container">
     <!-- Sidebar -->
     <aside class="sidebar">
-        <h2>Admin Panel</h2>
+        <h2><?php echo htmlspecialchars($_SESSION['FullName']); ?></h2>
         <ul>
             <li><a href="admin_dashboard.php"><i class="fas fa-home"></i> Dashboard</a></li>
             <li><a href="pet_management.php"><i class="fas fa-dog"></i> Manage Pets</a></li>
