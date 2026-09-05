@@ -145,14 +145,17 @@ vertical-align: middle;
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    background: #72427D;       /* purple circle */
+    background: #72427D;
+
     display: flex;
-    align-items: center;
-    justify-content: center;
+    align-items: center;      /* vertical centering */
+    justify-content: center;  /* horizontal centering */
+
     text-decoration: none;
-    font-size: 28px;           /* emoji size */
-    line-height: 1;
-    color: white;              /* emoji visible on purple */
+    font-size: 28px;          /* emoji size */
+    line-height: 50px;        /* match container height */
+    color: white;
+
     transition: 0.3s;
 }
 
