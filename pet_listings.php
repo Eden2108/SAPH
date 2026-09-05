@@ -38,10 +38,11 @@ $result = mysqli_query($conn, $sql);
                     <p>Adoption Status: <?php echo htmlspecialchars($pet['AdoptionStatus']); ?></p>
 
                     <!-- ✅ Pass PetID to details page -->
-                    <form method="get" action="pet_details.php">
-                        <input type="hidden" name="petID" value="<?php echo $pet['PetID']; ?>">
-                        <input type="submit" value="View Details">
-                    </form>
+                                <form method="get" action="pet_details.php">
+                <!-- ✅ Use pet_id consistently -->
+                <input type="hidden" name="pet_id" value="<?php echo $pet['PetID']; ?>">
+                <input type="submit" value="View Details">
+            </form>
                 </div>
             <?php endwhile; ?>
 

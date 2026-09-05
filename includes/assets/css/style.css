@@ -1788,3 +1788,21 @@ PASSWORD
 
 }
 
+
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;   /* centers headings, text, and buttons */
+}
+
+.container img {
+    display: block;
+    margin: 0 auto 20px;  /* centers image with spacing */
+}
+
+.pet-info p {
+    margin: 8px 0;
+    font-size: 18px;
+    color: #333;
+}
