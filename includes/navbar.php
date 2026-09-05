@@ -86,39 +86,24 @@ $userRole = $_SESSION['Role'] ?? '';
             <?php else: ?>
 
 
-                <!-- NORMAL USER -->
-                <?php if ($isLoggedIn && $userRole === 'User'): ?>
+                                    <!-- NORMAL USER -->
+                    <?php if ($isLoggedIn && $userRole === 'User'): ?>
+                        <a href="profile.php" class="navbar-avatar" title="My Profile">
+                            👤
+                        </a>
 
-                    <a
-                         href="profile.php"
-                         class="navbar-avatar"
-                     title="My Profile">
+                    <!-- ADMIN -->
+                    <?php elseif ($isLoggedIn && $userRole === 'Admin'): ?>
+                        <a href="admin_dashboard.php" class="navbar-avatar" title="Administrator Dashboard">
+                            👤
+                        </a>
 
-                        👤
-
-                    </a>
-
-
-                <!-- ADMIN -->
-                <?php elseif ($isLoggedIn && $userRole === 'Admin'): ?>
-
-                 <a href="admin_dashboard.php" class="admin-avatar" title="Administrator Dashboard">👤</a>
-
-
-                <!-- VOLUNTEER -->
-                <?php elseif ($isVolunteerLoggedIn): ?>
-
-                                <a
-                    href="volunteer_profile.php"
-                    class="navbar-avatar"
-                    title="Volunteer Profile">
-
-                    👤
-
-                </a>
-
-                <?php endif; ?>
-
+                    <!-- VOLUNTEER -->
+                    <?php elseif ($isVolunteerLoggedIn): ?>
+                        <a href="volunteer_profile.php" class="navbar-avatar" title="Volunteer Profile">
+                            👤
+                        </a>
+                    <?php endif; ?>
 
             <?php endif; ?>
 

@@ -145,30 +145,22 @@ vertical-align: middle;
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    background: #72427D;
-
+    background: #72427D;       /* purple circle */
     display: flex;
-    align-items: center;      /* vertical centering */
-    justify-content: center;  /* horizontal centering */
-
+    align-items: center;
+    justify-content: center;
     text-decoration: none;
-    font-size: 28px;          /* size of emoji */
-    line-height: 1;           /* reset default line-height */
-    color: white;             /* emoji visible on purple background */
-
+    font-size: 28px;           /* emoji size */
+    line-height: 1;
+    color: white;              /* emoji visible on purple */
     transition: 0.3s;
 }
-
-.navbar-avatar span {
-    display: inline-block;
-    line-height: 1;           /* ensures emoji baseline is corrected */
-}
-
 
 .navbar-avatar:hover {
     transform: scale(1.08);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.20);
 }
+
 
 
 /* BANNER */
